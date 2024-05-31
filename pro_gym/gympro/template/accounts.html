@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% csrf_token%}
+{%load static%}
+<head>
+    <meta charset="utf-8">
+    <title>Vibes Fitness Studio</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Best Gym Tfor Unisex Fitness Center in chennai,hyderabad,bangalur" name="keywords">
+    <meta content="Vibes fitness studio is one of the best unisex gym .here’s an exclusive gym for you! We provide fitness gym for all fitness workouts." name="description">
+
+    <!-- Favicon -->
+    <link href="{% static 'img/logo.png'%}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Rubik&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="{% static 'lib/flaticon/font/flaticon.css'%}" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
+
+    
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+<body>
+        <!-- Header Start -->
+        <div class="container-fluid bg-dark px-0">
+            <div class="row gx-0">
+                <div class="col-lg-3 bg-dark d-none d-lg-block">
+                    <a href="/" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+                        <h1 class="m-0 display-4 text-primary text-uppercase">VFS GYM</h1>
+                    </a>
+                </div>
+                <div class="col-lg-9">
+                    <div class="row gx-0 bg-secondary d-none d-lg-flex">
+                        <div class="col-lg-7 px-5 text-start">
+                            <div class="h-100 d-inline-flex align-items-center py-2 me-4">
+                                <i class="fa fa-envelope text-primary me-2"></i>
+                                <h6 class="mb-0">info@example.com</h6>
+                            </div>
+                            <div class="h-100 d-inline-flex align-items-center py-2">
+                                <i class="fa fa-phone-alt text-primary me-2"></i>
+                                <h6 class="mb-0">+012 345 6789</h6>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 px-5 text-end">
+                            <div class="d-inline-flex align-items-center py-2">
+                                <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a class="btn btn-light btn-square rounded-circle" href="">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0 px-lg-5">
+                        <a href="/" class="navbar-brand d-block d-lg-none">
+                            <h1 class="m-0 display-4 text-primary text-uppercase">VFS GYM</h1>
+                        </a>
+                        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                            <div class="navbar-nav mr-auto py-0">
+                                <a href="/view" class="nav-item nav-link">Customers</a>
+                                <a href="/employees" class="nav-item nav-link">employees</a>
+                                
+                                <a href="/feedbackpage" class="nav-item nav-link">Feedback</a>
+                                <a href="/useraccount" class="nav-item nav-link">Customer accounts</a>
+                                
+                            </div>
+                            <div>
+                                <div class="col-12">
+                                    <a class="btn btn-primary" href="/adminlogout"   type="submit">logout</a>
+                                </div>
+                            </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+    <div class="container-fluid bg-primary p-5 bg-hero mb-5">
+    <div class="col-12 text-center">
+    <h6 class="display-6 text-uppercase text-white mb-md-4">employees accounts</h6>
+        
+    
+    <div class="container">
+    <table class="table table-border table-bordered text-center shadow">
+        <tr class="bg-dark text-white">
+        <th class="text-uppercase text-primary">Employee_id</th>
+        <th class="text-uppercase text-primary">name</th>
+        <th class="text-uppercase text-primary">year-Months</th>
+        <th class="text-uppercase text-primary">Salary</th>
+        <th class="text-uppercase text-primary">status</th>
+        <th class="text-uppercase text-primary">Edit</th>
+        <th class="text-uppercase text-primary">Delete</th>
+        
+        </tr>
+        {% for i in emp%}
+        <tr>
+           
+            <td class="text-uppercase text-light">{{i.emp_id}}</td>
+            <td class="text-uppercase text-light">{{i.name}}</td>
+            <td class="text-uppercase text-light">{{i.month}}</td>
+            <td class="text-light">{{i.salary}}</td>
+            <td class=" text-light">{{i.credit}}</td>
+            
+            <td><a class="btn btn-primary" href="/editempaccount/{{i.id}}">edit</a></td>
+            <td><a class="btn btn-danger"  href="/deletempaccount/{{i.id}}">delete</a></td>
+           
+
+        </tr>
+        {%endfor%}
+    </table>
+    <a class="btn btn-info" href="/empaccount" >add New  employee account</a>
+    </div>
+
+    
+</div>
+
+
+</div>
+    </div>
+</body>
+</html>
